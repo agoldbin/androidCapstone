@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">AaronGoldbinCapstone</string>
+    <string name="hintRequired">Required</string>
+
+    <!-- Main Activity -->
+    <string name="act_workout">Workouts</string>
+
+
+    <!-- Workout Activity -->
+    <string name="act_exercise">Exercises</string>
+
+
+    <!-- Exercise Activity -->
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+    <string name="exercise_name">Exercise</string>
+    <string name="sets">Sets</string>
+    <string name="reps">Reps</string>
+    <string name="weight">Weight</string>
+    <string name="switch_reps">All sets same # reps?</string>
+    <string name="switch_weight">All sets same weight?</string>
+    <string name="update">Update</string>
+    <string name="add_set">Add Set </string>
+    <string name="no_workouts_entered">No Workouts</string>
+    <!--<string name="hintRequired">(required)</string>-->
+    <!--<string name="phone">Phone:</string>-->
+    <!--<string name="email">Email:</string>-->
+    <!--<string name="last_name">Last Name:</string>-->
+    <!--<string name="hintPhone">999-999-9999</string>-->
+    <!--<string name="no_contacts_entered">No contacts entered</string>-->
+</resources>
