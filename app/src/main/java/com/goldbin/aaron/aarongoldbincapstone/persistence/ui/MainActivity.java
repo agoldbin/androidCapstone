@@ -1,6 +1,7 @@
-package com.goldbin.aaron.aarongoldbincapstone;
+package com.goldbin.aaron.aarongoldbincapstone.persistence.ui;
 
 import android.arch.lifecycle.BuildConfig;
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -12,9 +13,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.goldbin.aaron.aarongoldbincapstone.AppInfo;
+import com.goldbin.aaron.aarongoldbincapstone.R;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.AGoldbinDB;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Workout;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AppInfo {
+    // Initalize database
+    private static final String DATABASE_NAME = "workout_db";
+    private AGoldbinDB database;
+    database = Room.databaseBuilder(getApplicationContext(),
+    AGoldbinDB.class, DATABASE_NAME)
+            .fallbackToDesctructiveMigration()
+                .build();
+
+
     // Initialize widgets
     FloatingActionButton mFabMain;
     TextView mEmptyMessage;

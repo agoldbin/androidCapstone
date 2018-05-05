@@ -10,9 +10,9 @@ public interface AppInfo {
     public static final String TAG
             = "myDebug";
     public static final String WORKOUT_LIST
-            = "com.goldbin.aaron.aarongoldbincapstone.MainActivity";
+            = "com.goldbin.aaron.aarongoldbincapstone.persistence.ui.MainActivity";
     public static final String EXERCISE_LIST
-            = "com.goldbin.aaron.aarongoldbincapstone.WorkoutActivity";
+            = "com.goldbin.aaron.aarongoldbincapstone.persistence.ui.WorkoutActivity";
     public static final String EXERCISES
             = "com.goldbin.aaron.aarongoldbincapstone.ExerciseAcitivty";
     public static final String EDIT_WORKOUT
@@ -27,13 +27,12 @@ public interface AppInfo {
     public static final String SET
             = "com.goldbin.aaron.aarongoldbincapstone.sets";
     public static final String REP
-            = "com.goldbin.aaron.aarongoldbincapstone.reps";
+            = "com.goldbin.aaron.aarongoldbincapstone.rep";
     public static final String WEIGHT
             = "com.goldbin.aaron.aarongoldbincapstone.weight";
     public static final String REP_BOOL
             = "com.goldbin.aaron.aarongoldbincapstone.repBool";
     public static final String WEIGHT_BOOL
             = "com.goldbin.aaron.aarongoldbincapstone.weightBool";
-
 
 }

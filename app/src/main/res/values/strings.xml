@@ -15,9 +15,9 @@
     <string name="add">Add</string>
     <string name="exercise_name">Exercise</string>
     <string name="sets">Sets</string>
-    <string name="reps">Reps</string>
+    <string name="rep">Reps</string>
     <string name="weight">Weight</string>
-    <string name="switch_reps">All sets same # reps?</string>
+    <string name="switch_reps">All sets same # rep?</string>
     <string name="switch_weight">All sets same weight?</string>
     <string name="update">Update</string>
     <string name="add_set">Add Set </string>

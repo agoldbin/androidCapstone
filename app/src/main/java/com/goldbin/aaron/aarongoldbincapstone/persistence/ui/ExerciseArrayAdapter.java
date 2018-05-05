@@ -1,4 +1,4 @@
-package com.goldbin.aaron.aarongoldbincapstone;
+package com.goldbin.aaron.aarongoldbincapstone.persistence.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -48,7 +48,7 @@ public class ExerciseArrayAdapter extends ArrayAdapter<Exercise> {
         Exercise exercise = exercises.get(position);
 
         // TODO modify to fit vars from Exercise class
-        // TODO if not all reps, sets, weights same, display each on its own line
+        // TODO if not all rep, sets, weights same, display each on its own line
         if (exercise != null) {
             //obtain a reference to widgets in the defined layout "wire up the widgets from detail_line"
             // note:  view.  which ties it to detail_line

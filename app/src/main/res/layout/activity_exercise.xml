@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExerciseActivity">
+    tools:context=".persistence.ui.ExerciseActivity">
 
     <TextView
         android:id="@+id/lblExerciseName"
@@ -41,7 +41,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:visibility="gone"
-        android:text="@string/reps"
+        android:text="@string/rep"
         app:layout_constraintBottom_toBottomOf="@+id/inputExerciseName"
         app:layout_constraintEnd_toStartOf="@+id/inputExerciseName"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="8dp"-->
         <!--android:layout_marginTop="8dp"-->
-        <!--android:text="@string/reps"-->
+        <!--android:text="@string/rep"-->
         <!--app:layout_constraintBottom_toBottomOf="@+id/inputExerciseReps"-->
         <!--app:layout_constraintTop_toTopOf="@+id/inputExerciseReps"-->
         <!--app:layout_constraintEnd_toEndOf="@+id/lblFirstName"-->

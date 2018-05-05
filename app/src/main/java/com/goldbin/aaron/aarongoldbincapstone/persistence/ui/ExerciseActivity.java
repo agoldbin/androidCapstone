@@ -1,4 +1,4 @@
-package com.goldbin.aaron.aarongoldbincapstone;
+package com.goldbin.aaron.aarongoldbincapstone.persistence.ui;
 
 import android.arch.lifecycle.BuildConfig;
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.goldbin.aaron.aarongoldbincapstone.AppInfo;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Exercise;
+import com.goldbin.aaron.aarongoldbincapstone.R;
 
 import java.util.ArrayList;
 
@@ -119,7 +123,7 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
             mExercise = intent.getParcelableExtra("EDIT_EXERCISE");
             mName.setText(mExercise.getMExerciseName());
             mSets.setText(mExercise.getMSets());
-//            mRep.setText(mExercise.getReps().toString());
+//            mRep.setText(mExercise.getRep().toString());
 //            mWeight.setText(mExercise.getWeights().toString());
             mRepBool.setChecked(mExercise.isRepsSame());
             mWeightBool.setChecked(mExercise.isWeightsSame());
@@ -152,7 +156,7 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
 //                if (mExercise != null) {
 //                    mExercise.setExerciseName(mName.getText().toString());
 //                    mExercise.setSets(Integer.parseInt(mSets.getText().toString()));
-//                    mExercise.setReps(mExerciseReps);
+//                    mExercise.setRep(mExerciseReps);
 //                    mExercise.setWeights(mExerciseWeights);
 //
 //                    exerciseUpdated();
@@ -190,10 +194,10 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
         int i = 1;
         if (mRepBool.isChecked()) {
             if (mWeightBool.isChecked()) {
-                // all sets same reps and weight
+                // all sets same rep and weight
                 // on click, exercise done!
             } else {
-                // all sets same reps, different weights
+                // all sets same rep, different weights
                 while (i <= mExercise.getMSets()) {
                     if (i > 1) {
                         // set and default input for sets
@@ -207,7 +211,7 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
                         public void onClick(View view) {
                             // verify that mFirst && mLast HAVE BEEN ENTERED BEFORE BEING PASSED
                             if (mEx1.getText().toString().trim().equalsIgnoreCase("")) {
-                                mEx1.setError("# of reps required");
+                                mEx1.setError("# of rep required");
                             } else if (mEx2.getText().toString().trim().equalsIgnoreCase("")) {
                                 mEx2.setError("Weight required");
                             }
@@ -221,10 +225,10 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
             mExercise.setMWeights(mExerciseWeights);
         } else {
             if (mWeightBool.isChecked()) {
-                // all sets different reps, same weight
+                // all sets different rep, same weight
 
             } else {
-                // all sets are different reps and weights
+                // all sets are different rep and weights
             }
         }
     }
@@ -244,7 +248,7 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
                 public void onClick(View view) {
                     // verify that mFirst && mLast HAVE BEEN ENTERED BEFORE BEING PASSED
                     if (mEx1.getText().toString().trim().equalsIgnoreCase("")) {
-                        mEx1.setError("# of reps required");
+                        mEx1.setError("# of rep required");
                     } else if (mEx2.getText().toString().trim().equalsIgnoreCase("")) {
                         mEx2.setError("Weight required");
                     }

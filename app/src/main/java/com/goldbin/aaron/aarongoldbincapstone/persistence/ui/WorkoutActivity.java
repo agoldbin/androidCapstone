@@ -1,4 +1,4 @@
-package com.goldbin.aaron.aarongoldbincapstone;
+package com.goldbin.aaron.aarongoldbincapstone.persistence.ui;
 
 import android.arch.lifecycle.BuildConfig;
 import android.content.Intent;
@@ -12,9 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.goldbin.aaron.aarongoldbincapstone.AppInfo;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Exercise;
+import com.goldbin.aaron.aarongoldbincapstone.R;
 
-import static com.goldbin.aaron.aarongoldbincapstone.AppInfo.EXERCISE_LIST;
+import java.util.ArrayList;
 
 public class WorkoutActivity extends AppCompatActivity implements AppInfo {
     // Initialize widgets
