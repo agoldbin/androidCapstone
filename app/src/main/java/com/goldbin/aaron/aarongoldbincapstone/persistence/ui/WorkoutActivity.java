@@ -37,7 +37,7 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
         if (android.arch.lifecycle.BuildConfig.DEBUG) {
             Log.i(TAG, "onSaveInstanceState");
         }
-        savedInstanceState.putParcelableArrayList(EXERCISE_LIST, mExercises);
+//        savedInstanceState.putParcelableArrayList(EXERCISE_LIST, mExercises);
     }
 
     /* (non-Javadoc)
@@ -63,7 +63,7 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
             mExercises = new ArrayList<Exercise>();
         } else {
             // if a saved instance exists
-            mExercises = savedInstanceState.getParcelableArrayList(EXERCISE_LIST);
+//            mExercises = savedInstanceState.getParcelableArrayList(EXERCISE_LIST);
         }
 
         // TODO wire up widgets
@@ -75,7 +75,7 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
         /*
          * Create a list adapter to adapt it to individual rows in listView
          */
-        mExerciseArrayAdapter = new ExerciseArrayAdapter(this, R.layout.exercise_detail, mExercises);
+//        mExerciseArrayAdapter = new ExerciseArrayAdapter(this, R.layout.exercise_detail, mExercises);
 
         // wire up listView widget
         mExerciseList.setAdapter(mExerciseArrayAdapter);
@@ -88,7 +88,7 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
                 // grab position?
                 mExercise = mExercises.get(i);
                 Intent intent = new Intent(WorkoutActivity.this, ExerciseActivity.class);
-                intent.putExtra("EDIT_EXERCISE", mExercise);
+//                intent.putExtra("EDIT_EXERCISE", mExercise);
                 startActivityForResult(intent, 0);
             }
         });

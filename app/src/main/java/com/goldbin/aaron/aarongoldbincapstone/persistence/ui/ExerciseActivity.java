@@ -1,5 +1,7 @@
 package com.goldbin.aaron.aarongoldbincapstone.persistence.ui;
 
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.arch.lifecycle.BuildConfig;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -99,6 +101,16 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
+        // add fragments for exercise activity
+        FragmentManager fragManager = getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragManager.beginTransaction();
+
+        ExerciseFragment exerciseFrag = new ExerciseFragment();
+        SetFragment setFrag = new SetFragment();
+
+        fragTransaction.add(R.id.fragment_container, exerciseFrag);
+        fragTransaction.commit();
 
         // wire up widgets
         mAddButton = (Button) (findViewById(R.id.btnAdd));

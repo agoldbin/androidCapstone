@@ -1,5 +1,7 @@
 package com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity;
 
+// TODO https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#10 use this as model
+
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
