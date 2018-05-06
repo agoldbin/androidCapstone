@@ -28,21 +28,21 @@ public class Exercise {
     @NonNull
     private int id;
 
-    @Relation(parentColumn = "id", entityColumn = "workout_id", entity = Exercise.class)
+    @Relation(parentColumn = "id", entityColumn = "workoutId", entity = Exercise.class)
     private int workoutId;
 
     // exercise name
-    @ColumnInfo(name = "exercise_name")
+    @ColumnInfo(name = "exerciseName")
     private String exerciseName;
 
     // exercise sets
     @ColumnInfo(name = "sets")
     private int sets;
 
-    @ColumnInfo(name = "reps_same")
+    @ColumnInfo(name = "repsSame")
     private boolean repsSame;
 
-    @ColumnInfo(name = "weight_same")
+    @ColumnInfo(name = "weightsSame")
     private boolean weightSame;
 
     // Detailed info on sets

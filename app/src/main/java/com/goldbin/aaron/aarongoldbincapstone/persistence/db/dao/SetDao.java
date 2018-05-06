@@ -7,7 +7,6 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Set;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Set;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +19,10 @@ public interface SetDao {
     @Insert
     void insertSets (List<Set> setList);
 
-    @Query("SELECT * FROM `Set` WHERE id = :id")
+    @Query("SELECT * FROM sets WHERE id = :id")
     Set fetchOneSetById(int id);
 
-    @Query("SELECT * FROM `Set`")
+    @Query("SELECT * FROM sets")
     ArrayList<Set> getAllSets();
 
     @Update

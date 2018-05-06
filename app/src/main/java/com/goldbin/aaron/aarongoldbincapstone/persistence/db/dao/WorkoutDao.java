@@ -6,8 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Set;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Workout;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Workout;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface WorkoutDao {
     @Insert
     void insertWorkouts (List<Workout> workoutList);
 
-    @Query("SELECT * FROM `Set` WHERE id = :id")
+    @Query("SELECT * FROM workouts WHERE id = :id")
     Workout fetchOneWorkoutById(int id);
 
     @Update

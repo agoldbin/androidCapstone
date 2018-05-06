@@ -19,11 +19,11 @@ public class Workout {
     private int id;
 
     // date of workout
-    @ColumnInfo(name = "workout_date")
+    @ColumnInfo(name = "workoutDate")
     Date workoutDate;
 
     // workout name/type(?)
-    @ColumnInfo(name = "workout_name")
+    @ColumnInfo(name = "workoutName")
     String workoutName;
 
     // Exercises

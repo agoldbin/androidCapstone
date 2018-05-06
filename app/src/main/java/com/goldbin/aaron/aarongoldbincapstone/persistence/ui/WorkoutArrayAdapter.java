@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import com.goldbin.aaron.aarongoldbincapstone.R;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Workout;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Workout;
 
 import java.util.ArrayList;
 

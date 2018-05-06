@@ -30,5 +30,5 @@ public interface ExerciseDao {
     void updateExercise (Exercise exercise);
 
     @Delete
-    void deleteWo(Exercise exercise);
+    void deleteExercise (Exercise exercise);
 }

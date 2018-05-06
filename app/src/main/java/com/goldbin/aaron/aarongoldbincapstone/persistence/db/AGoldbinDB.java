@@ -8,9 +8,9 @@ import android.content.Context;
 import com.goldbin.aaron.aarongoldbincapstone.persistence.db.dao.ExerciseDao;
 import com.goldbin.aaron.aarongoldbincapstone.persistence.db.dao.SetDao;
 import com.goldbin.aaron.aarongoldbincapstone.persistence.db.dao.WorkoutDao;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Exercise;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Set;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Workout;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Exercise;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Set;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Workout;
 
 @Database(entities = {Set.class, Exercise.class, Workout.class}, version = 1)
 public abstract class AGoldbinDB extends RoomDatabase {

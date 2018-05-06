@@ -1,5 +1,6 @@
 package com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
@@ -18,7 +19,7 @@ import lombok.Setter;
         foreignKeys = {
                 @ForeignKey(entity = Exercise.class,
                         parentColumns = "id",
-                        childColumns = "exercise_id",
+                        childColumns = "exerciseId",
                         onDelete = ForeignKey.CASCADE)
         })
 public class Set {
@@ -27,16 +28,18 @@ public class Set {
     private int id;
 
 //    @ColumnInfo(name = "exercise_id")
-    @Relation(parentColumn = "id", entityColumn = "exercise_id", entity = Set.class)
+    @Relation(parentColumn = "id", entityColumn = "exerciseId", entity = Set.class)
     private int exerciseId;
 
 //     exercise rep
 //     bool all rep same?
+    @ColumnInfo(name = "rep")
     private int rep;
 //    private boolean repsSame;
 
     // bool all weights same?
     // exercise weight
+    @ColumnInfo(name = "weight")
     private int weight;
 //    private boolean weightsSame;
 

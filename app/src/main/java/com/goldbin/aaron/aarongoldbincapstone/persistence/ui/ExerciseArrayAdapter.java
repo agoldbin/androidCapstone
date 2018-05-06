@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.goldbin.aaron.aarongoldbincapstone.R;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Exercise;
+
 import java.util.ArrayList;
 
 /**

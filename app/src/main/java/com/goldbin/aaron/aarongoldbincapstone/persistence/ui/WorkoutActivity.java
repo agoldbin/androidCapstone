@@ -13,8 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.goldbin.aaron.aarongoldbincapstone.AppInfo;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Exercise;
 import com.goldbin.aaron.aarongoldbincapstone.R;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Exercise;
 
 import java.util.ArrayList;
 
