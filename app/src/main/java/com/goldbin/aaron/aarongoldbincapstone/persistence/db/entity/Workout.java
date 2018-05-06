@@ -1,10 +1,9 @@
 package com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Workout;
 
 import java.util.Date;
 
@@ -14,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(tableName = "workouts")
-public class WorkoutEntity implements Workout {
+public class Workout {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -27,10 +26,14 @@ public class WorkoutEntity implements Workout {
     @ColumnInfo(name = "workout_name")
     String workoutName;
 
-    public WorkoutEntity() {
+    // Exercises
+    @Embedded
+    Exercise exercise;
+
+    public Workout() {
     }
 
-    public WorkoutEntity(String mWorkoutName) {
+    public Workout(String mWorkoutName) {
         this.workoutName = mWorkoutName;
         workoutDate = new Date();
     }

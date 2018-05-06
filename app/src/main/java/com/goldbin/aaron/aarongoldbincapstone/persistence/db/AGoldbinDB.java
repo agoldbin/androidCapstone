@@ -45,13 +45,13 @@ public abstract class AGoldbinDB extends RoomDatabase {
 //import android.content.Context;
 //
 //import com.goldbin.aaron.aarongoldbincapstone.persistence.db.dao.SetDao;
-//import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.ExerciseEntity;
-//import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.SetEntity;
-//import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.WorkoutEntity;
+//import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Exercise;
+//import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Set;
+//import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Workout;
 //import com.goldbin.aaron.aarongoldbincapstone.persistence.db.dao.ExerciseDao;
 //import com.goldbin.aaron.aarongoldbincapstone.persistence.db.dao.WorkoutDao;
 //
-//@Database(entities = {WorkoutEntity.class, ExerciseEntity.class, SetEntity.class}, version = 1)
+//@Database(entities = {Workout.class, Exercise.class, Set.class}, version = 1)
 //public abstract class AGoldbinDB extends RoomDatabase {
 //
 //    private static AGoldbinDB sInstance;

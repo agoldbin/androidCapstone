@@ -19,7 +19,7 @@ public interface WorkoutDao {
     @Insert
     void insertWorkouts (List<Workout> workoutList);
 
-    @Query("SELECT * FROM sets WHERE id = :id")
+    @Query("SELECT * FROM `Set` WHERE id = :id")
     Workout fetchOneWorkoutById(int id);
 
     @Update

@@ -6,9 +6,10 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Exercise;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.model.Workout;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Exercise;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Workout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -19,12 +20,15 @@ public interface ExerciseDao {
     @Insert
     void insertExercises(List<Exercise> exerciseList);
 
-    @Query("SELECT * FROM sets WHERE id = :id")
+    @Query("SELECT * FROM exercises WHERE id = :id")
     Workout fetchOneWorkoutById(int id);
 
+    @Query("SELECT * FROM exercises")
+    ArrayList<Exercise> getAllExercises();
+
     @Update
-    void updateWorkout (Workout workout);
+    void updateExercise (Exercise exercise);
 
     @Delete
-    void deleteWorkout (Workout workout);
+    void deleteWo(Exercise exercise);
 }
