@@ -6,7 +6,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ListView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,22 +31,16 @@ public class Workout implements Parcelable {
     // workout name/type(?)
     String mWorkoutName;
 
-    // listview of workouts performed
-    ListView mWorkoutListView;
-
     // workouts are editable
-
-    // notes(?)
-    String mWorkoutNotes;
 
     public Workout(String workoutName) {
         mWorkoutName = workoutName;
-        mWorkoutDate = new Date();
+        SimpleDateFormat mWorkoutDate = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+        System.out.println(mWorkoutDate);
     }
 
     protected Workout(Parcel in) {
         mWorkoutName = in.readString();
-        mWorkoutNotes = in.readString();
     }
 
     public static final Creator<Workout> CREATOR = new Creator<Workout>() {
@@ -66,8 +63,5 @@ public class Workout implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mWorkoutName);
-        dest.writeString(mWorkoutNotes);
     }
-
-    // store workouts to database(how?)
 }
