@@ -1,7 +1,5 @@
 package com.goldbin.aaron.aarongoldbincapstone.model;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -17,12 +15,10 @@ import lombok.Setter;
  *
  * @author agoldbin
  */
-@Entity(tableName = "workouts")
 @Getter
 @Setter
 public class Workout implements Parcelable {
 
-    @PrimaryKey
     // date of workout
     Date mWorkoutDate;
 

@@ -1,6 +1,5 @@
 package com.goldbin.aaron.aarongoldbincapstone.model;
 
-import android.arch.persistence.room.Entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -14,7 +13,7 @@ import lombok.Setter;
  *
  * @author agoldbin
  */
-@Entity(tableName = "exercises")
+
 @Getter
 @Setter
 // TODO load common exercises from StringArray?
@@ -22,7 +21,6 @@ public class Exercise implements Parcelable {
 
 
     // exercise name
-
     private String mExerciseName;
 
     // exercise sets

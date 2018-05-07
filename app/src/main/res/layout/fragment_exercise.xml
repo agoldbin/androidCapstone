@@ -20,7 +20,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/exercise_name" />        <!--app:layout_constraintBottom_toBottomOf="@+id/inputExerciseName"-->
+        android:text="@string/lbl_exercise" />        <!--app:layout_constraintBottom_toBottomOf="@+id/inputExerciseName"-->
     <!--app:layout_constraintEnd_toStartOf="@+id/inputExerciseName"-->
     <!--app:layout_constraintStart_toStartOf="parent"-->
     <!--app:layout_constraintTop_toTopOf="@+id/inputExerciseName" />-->

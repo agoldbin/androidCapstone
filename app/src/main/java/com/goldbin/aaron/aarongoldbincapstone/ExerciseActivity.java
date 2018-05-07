@@ -3,6 +3,8 @@ package com.goldbin.aaron.aarongoldbincapstone;
 import android.arch.lifecycle.BuildConfig;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.goldbin.aaron.aarongoldbincapstone.model.Exercise;
+import com.goldbin.aaron.aarongoldbincapstone.SetFragment;
+import com.goldbin.aaron.aarongoldbincapstone.ExerciseFragment;
+
 
 import java.util.ArrayList;
 
@@ -21,12 +26,15 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
     // instantiate widgets
     Button mAddButton;
     Button mCancelButton;
+    EditText mEx1;
+    EditText mEx2;
     EditText mName;
     EditText mSets;
     EditText mRep;
     EditText mWeight;
     Switch mRepBool;
     Switch mWeightBool;
+    String mLblChange;
     TextView mLblName;
     TextView mLblSets;
     TextView mLblReps;
@@ -95,6 +103,16 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
+        // add fragments for exercise activity
+        FragmentManager fragManager = getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragManager.beginTransaction();
+
+        ExerciseFragment exerciseFrag = new ExerciseFragment();
+        SetFragment setFrag = new SetFragment();
+
+        fragTransaction.add(R.id.fragment_container, exerciseFrag);
+        fragTransaction.commit();
+
         // wire up widgets
         mAddButton = (Button) (findViewById(R.id.btnAdd));
         mCancelButton = (Button) (findViewById(R.id.btnCancel));
@@ -118,7 +136,7 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
             mExercise = intent.getParcelableExtra("EDIT_EXERCISE");
             mName.setText(mExercise.getMExerciseName());
             mSets.setText(mExercise.getMSets());
-//            mRep.setText(mExercise.getReps().toString());
+//            mRep.setText(mExercise.getRep().toString());
 //            mWeight.setText(mExercise.getWeights().toString());
             mRepBool.setChecked(mExercise.isRepsSame());
             mWeightBool.setChecked(mExercise.isWeightsSame());
@@ -147,6 +165,24 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
 //                checkSwitches();
                 toggleScreenView();
 
+//                else if (mExercise != null) {
+//                if (mExercise != null) {
+//                    mExercise.setExerciseName(mName.getText().toString());
+//                    mExercise.setSets(Integer.parseInt(mSets.getText().toString()));
+//                    mExercise.setRep(mExerciseReps);
+//                    mExercise.setWeights(mExerciseWeights);
+//
+//                    exerciseUpdated();
+//                    ExerciseActivity.super.onBackPressed();
+//                } else {
+//                    mExercise = new Exercise(
+//                            mName.getText().toString()
+//                            , Integer.parseInt(mSets.getText().toString())
+//                            , mExerciseReps
+//                            , mExerciseWeights
+//                    );
+//                    exerciseEntered();
+//                    ExerciseActivity.super.onBackPressed();
             }
         });
     }
@@ -167,75 +203,75 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
     }
 
     // function to determine if switches are activated
-//    public void checkSwitches () {
-//        int i = 1;
-//        if (mRepBool.isChecked()) {
-//            if (mWeightBool.isChecked()) {
-//                // all sets same reps and weight
-//                // on click, exercise done!
-//            } else {
-//                // all sets same reps, different weights
-//                while (i <= mExercise.getMSets()) {
-//                    if (i > 1) {
-//                        // set and default input for sets
-//                        mEx1.setFocusable(false);
-//                        mEx1.setText(mExercise.getMReps().get(i - 1));
-//                    }
-//                    // onclick, add weight to arraylist
-//                    mAddButton.setText(R.string.add_set + i);
-//                    mAddButton.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View view) {
-//                            // verify that mFirst && mLast HAVE BEEN ENTERED BEFORE BEING PASSED
-//                            if (mEx1.getText().toString().trim().equalsIgnoreCase("")) {
-//                                mEx1.setError("# of reps required");
-//                            } else if (mEx2.getText().toString().trim().equalsIgnoreCase("")) {
-//                                mEx2.setError("Weight required");
-//                            }
-//                            mExerciseReps.add(Integer.parseInt(mEx1.getText().toString()));
-//                            mExerciseWeights.add(Integer.parseInt(mEx2.getText().toString()));
-//                        }
-//                    });
-//                    i++;
-//                }
-//            }
-//            mExercise.setMWeights(mExerciseWeights);
-//        } else {
-//            if (mWeightBool.isChecked()) {
-//                // all sets different reps, same weight
-//
-//            } else {
-//                // all sets are different reps and weights
-//            }
-//        }
-//    }
+    public void checkSwitches () {
+        int i = 1;
+        if (mRepBool.isChecked()) {
+            if (mWeightBool.isChecked()) {
+                // all sets same rep and weight
+                // on click, exercise done!
+            } else {
+                // all sets same rep, different weights
+                while (i <= mExercise.getMSets()) {
+                    if (i > 1) {
+                        // set and default input for sets
+                        mEx1.setFocusable(false);
+                        mEx1.setText(mExercise.getMReps().get(i - 1));
+                    }
+                    // onclick, add weight to arraylist
+                    mAddButton.setText(R.string.add_set + i);
+                    mAddButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // verify that mFirst && mLast HAVE BEEN ENTERED BEFORE BEING PASSED
+                            if (mEx1.getText().toString().trim().equalsIgnoreCase("")) {
+                                mEx1.setError("# of rep required");
+                            } else if (mEx2.getText().toString().trim().equalsIgnoreCase("")) {
+                                mEx2.setError("Weight required");
+                            }
+                            mExerciseReps.add(Integer.parseInt(mEx1.getText().toString()));
+                            mExerciseWeights.add(Integer.parseInt(mEx2.getText().toString()));
+                        }
+                    });
+                    i++;
+                }
+            }
+            mExercise.setMWeights(mExerciseWeights);
+        } else {
+            if (mWeightBool.isChecked()) {
+                // all sets different rep, same weight
 
-//    public void setArrayLists () {
-//        int i = 1;
-//        while (i <= mExercise.getMSets()) {
-//            if (i > 1) {
-//                // set and default input for weights
-//                mEx2.setFocusable(false);
-//                mEx2.setText(mExercise.getMWeights().get(i - 1));
-//            }
-//            // onclick, add weight to arraylist
-//            mAddButton.setText(R.string.add_set + i);
-//            mAddButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    // verify that mFirst && mLast HAVE BEEN ENTERED BEFORE BEING PASSED
-//                    if (mEx1.getText().toString().trim().equalsIgnoreCase("")) {
-//                        mEx1.setError("# of reps required");
-//                    } else if (mEx2.getText().toString().trim().equalsIgnoreCase("")) {
-//                        mEx2.setError("Weight required");
-//                    }
-//                    mExerciseReps.add(Integer.parseInt(mEx1.getText().toString()));
-//                    mExerciseWeights.add(Integer.parseInt(mEx2.getText().toString()));
-//                }
-//            });
-//            i++;
-//        }
-//    }
+            } else {
+                // all sets are different rep and weights
+            }
+        }
+    }
+
+    public void setArrayLists () {
+        int i = 1;
+        while (i <= mExercise.getMSets()) {
+            if (i > 1) {
+                // set and default input for weights
+                mEx2.setFocusable(false);
+                mEx2.setText(mExercise.getMWeights().get(i - 1));
+            }
+            // onclick, add weight to arraylist
+            mAddButton.setText(R.string.add_set + i);
+            mAddButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // verify that mFirst && mLast HAVE BEEN ENTERED BEFORE BEING PASSED
+                    if (mEx1.getText().toString().trim().equalsIgnoreCase("")) {
+                        mEx1.setError("# of rep required");
+                    } else if (mEx2.getText().toString().trim().equalsIgnoreCase("")) {
+                        mEx2.setError("Weight required");
+                    }
+                    mExerciseReps.add(Integer.parseInt(mEx1.getText().toString()));
+                    mExerciseWeights.add(Integer.parseInt(mEx2.getText().toString()));
+                }
+            });
+            i++;
+        }
+    }
 
     /**
      * This method will determine what text and edit views to display on the activity

@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ExerciseActivity">
 
-    <fragment android:name="com.goldbin.aaron.aarongoldbincapstone.fragments.SetFragment"
+    <fragment android:name="com.goldbin.aaron.aarongoldbincapstone.SetFragment"
         android:id="@+id/setInfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <fragment android:name="com.goldbin.aaron.aarongoldbincapstone.fragments.ExerciseFragment"
+    <fragment android:name="com.goldbin.aaron.aarongoldbincapstone.ExerciseFragment"
         android:id="@+id/exerciseInfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
