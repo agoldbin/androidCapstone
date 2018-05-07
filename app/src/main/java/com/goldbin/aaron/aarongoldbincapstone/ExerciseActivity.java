@@ -114,18 +114,18 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
         fragTransaction.commit();
 
         // wire up widgets
-        mAddButton = (Button) (findViewById(R.id.btnAdd));
-        mCancelButton = (Button) (findViewById(R.id.btnCancel));
-        mName = (EditText) (findViewById(R.id.inputExerciseName));
-        mSets = (EditText) (findViewById(R.id.inputExerciseSets));
-        mRep = (EditText) (findViewById(R.id.inputExerciseReps));
-        mWeight = (EditText) (findViewById(R.id.inputExerciseWeight));
-        mRepBool = (Switch) (findViewById(R.id.switchReps));
-        mWeightBool = (Switch) (findViewById(R.id.switchWeight));
-        mLblName = (TextView) (findViewById(R.id.lblExerciseName));
-        mLblSets = (TextView) (findViewById(R.id.lblExerciseSets));
-        mLblReps = (TextView) (findViewById(R.id.lblExerciseReps));
-        mLblWeights = (TextView) (findViewById(R.id.lblExerciseWeights));
+//        mAddButton = (Button) (findViewById(R.id.btnAddSet));
+//        mCancelButton = (Button) (findViewById(R.id.btnCancel));
+//        mName = (EditText) (findViewById(R.id.inputExerciseName));
+//        mSets = (EditText) (findViewById(R.id.inputExerciseSets));
+//        mRep = (EditText) (findViewById(R.id.inputExerciseReps));
+//        mWeight = (EditText) (findViewById(R.id.inputExerciseWeight));
+//        mRepBool = (Switch) (findViewById(R.id.switchReps));
+//        mWeightBool = (Switch) (findViewById(R.id.switchWeight));
+//        mLblName = (TextView) (findViewById(R.id.lblExerciseName));
+//        mLblSets = (TextView) (findViewById(R.id.lblExerciseSets));
+//        mLblReps = (TextView) (findViewById(R.id.lblExerciseReps));
+//        mLblWeights = (TextView) (findViewById(R.id.lblExerciseWeights));
 //        mLbl1 = (TextView) (findViewById(R.id.lblExercise1));
 //        mLbl2 = (TextView) (findViewById(R.id.lblExercise2));
 
