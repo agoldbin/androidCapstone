@@ -12,9 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.goldbin.aaron.aarongoldbincapstone.model.Exercise;
 
-import static com.goldbin.aaron.aarongoldbincapstone.AppInfo.EXERCISE_LIST;
+import java.util.ArrayList;
 
 public class WorkoutActivity extends AppCompatActivity implements AppInfo {
     // Initialize widgets

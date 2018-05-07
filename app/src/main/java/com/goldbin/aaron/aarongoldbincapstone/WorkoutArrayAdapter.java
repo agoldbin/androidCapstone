@@ -7,7 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
+
+import com.goldbin.aaron.aarongoldbincapstone.model.Workout;
 
 import java.util.ArrayList;
 

@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.goldbin.aaron.aarongoldbincapstone.model.Workout;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AppInfo {

@@ -1,4 +1,4 @@
-package com.goldbin.aaron.aarongoldbincapstone;
+package com.goldbin.aaron.aarongoldbincapstone.model;
 
 import android.arch.persistence.room.Entity;
 import android.os.Parcel;
