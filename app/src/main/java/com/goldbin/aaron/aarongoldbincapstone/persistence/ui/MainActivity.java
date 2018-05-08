@@ -1,8 +1,6 @@
 package com.goldbin.aaron.aarongoldbincapstone.persistence.ui;
 
-import android.app.FragmentManager;
 import android.arch.lifecycle.BuildConfig;
-import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -16,31 +14,32 @@ import android.widget.TextView;
 
 import com.goldbin.aaron.aarongoldbincapstone.AppInfo;
 import com.goldbin.aaron.aarongoldbincapstone.R;
-import com.goldbin.aaron.aarongoldbincapstone.persistence.db.AGoldbinDB;
 import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Workout;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AppInfo {
-    // Initalize database
-    private static final String DATABASE_NAME = "workout_db";
-    private AGoldbinDB database = Room.databaseBuilder(getApplicationContext(),
-            AGoldbinDB.class, DATABASE_NAME).build();
+    // Reference to database
+    DatabaseReference fbRef;
+
+    // Initialize variables and widgets
+    FloatingActionButton mFabMain;
+    TextView mEmptyMessage;
+    ListView mWorkoutslv;
+    ArrayAdapter mWorkoutArrayAdapter;
+    ArrayList<Workout> mWorkoutsArray;
+
+    // variable to access workout info
+    Workout mWorkout;
 
     // Save fragment on config change
     private static final String TAG_RETAINED_FRAGMENT = "RetainedFragment";
 
-
-
-    // Initialize widgets
-    FloatingActionButton mFabMain;
-    TextView mEmptyMessage;
-    ListView mWorkoutList;
-    ArrayAdapter mWorkoutArrayAdapter;
-    ArrayList<Workout> mWorkouts;
-
-    // variable to access workout info
-    Workout mWorkout;
 
     // Save/restore instance on screen rotation
     @Override
@@ -61,54 +60,72 @@ public class MainActivity extends AppCompatActivity implements AppInfo {
         if (BuildConfig.DEBUG) {
             Log.i(TAG, "onRestoreInstanceState");
         }
-        this.mWorkouts = mWorkouts;
+        this.mWorkoutsArray = mWorkoutsArray;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mWorkoutList = (ListView) findViewById(android.R.id.list);
 
-        // find the retained fragment on activity restarts
-        FragmentManager fm = getFragmentManager();
+        // get reference to firebase
+        fbRef = FirebaseDatabase.getInstance().getReference();
+        mWorkoutslv = (ListView) findViewById(android.R.id.list);
 
-        // create the fragment and data the first time
-//        if (mRetainedFragment == null) {
-//            // add the fragment
-//            mRetainedFragment = new RetainedFragment();
-//            fm.beginTransaction().add(mRetainedFragment, TAG_RETAINED_FRAGMENT).commit();
-            // load data from a data source or perform any calculation
-//            mRetainedFragment.setData();
+        // TODO wire up widgets
+        mFabMain = (FloatingActionButton) (findViewById(R.id.fabMain));
+
+        mWorkoutslv = (ListView) (findViewById(R.id.lvWorkoutList));
+        mWorkoutArrayAdapter = new ArrayAdapter(this, R.layout.workout_detail, mWorkoutsArray);
+        mWorkoutslv.setAdapter(mWorkoutArrayAdapter);
 
 
-            if (savedInstanceState == null) {
-                // if no saved instance exists
-                mWorkouts = new ArrayList<Workout>();
-            } else {
-                // if a saved instance exists
-//                mWorkouts = savedInstanceState.getParcelableArrayList(WORKOUT_LIST);
+        // add event listener for firebase
+        fbRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                mWorkoutsArray.add(dataSnapshot.getValue(Workout.class));
+                mWorkoutArrayAdapter.notifyDataSetChanged();
             }
 
-            // TODO wire up widgets
-            mFabMain = (FloatingActionButton) (findViewById(R.id.fabMain));
-            mWorkoutList = (ListView) (findViewById(R.id.lvWorkoutList));
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//          if workout array contains, -> replace
+//                mWorkoutsArray.(dataSnapshot.getValue(Workout.class));
+                mWorkoutArrayAdapter.notifyDataSetChanged();
+            }
 
-            /*
-             * Create a list adapter to adapt it to individual rows in listView
-             */
-//            mWorkoutArrayAdapter = new WorkoutArrayAdapter(this, R.layout.workout_detail, mWorkouts);
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                mWorkoutsArray.remove(dataSnapshot.getValue(Workout.class));
+                mWorkoutArrayAdapter.notifyDataSetChanged();
+            }
 
-            // wire up listView widget
-            mWorkoutList.setAdapter(mWorkoutArrayAdapter);
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+//            if (savedInstanceState == null) {
+//                // if no saved instance exists
+//                mWorkoutsArray = new ArrayList<Workout>();
+//            } else {
+//                // if a saved instance exists
+////                mWorkoutsArray = savedInstanceState.getParcelableArrayList(WORKOUT_LIST);
+//            }
 
             // enable ability to click/edit workout
             // workouts are editable
-            mWorkoutList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            mWorkoutslv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    // grab position?
-                    mWorkout = mWorkouts.get(i);
+                    mWorkout = mWorkoutsArray.get(i);
                     Intent intent = new Intent(MainActivity.this, WorkoutActivity.class);
 //                    intent.putExtra("EDIT_WORKOUT", mWorkout);
                     startActivityForResult(intent, 0);

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "424304403986",
+    "firebase_url": "https://workout-tracker-279f4.firebaseio.com",
+    "project_id": "workout-tracker-279f4",
+    "storage_bucket": "workout-tracker-279f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424304403986:android:dd72afe2527bf4ef",
+        "android_client_info": {
+          "package_name": "com.goldbin.aaron.aarongoldbincapstone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424304403986-6ainjhd8edcrrb5qc164qeiqa5u63pgt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.goldbin.aaron.aarongoldbincapstone",
+            "certificate_hash": "99d06b95920206e60ee32615caa070ede20d6b10"
+          }
+        },
+        {
+          "client_id": "424304403986-dg2ppf98gcpnd38evjot52cc1v88u92h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVai6gaHscy7GU62GOCYmQqRoBBZx2IRs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424304403986-dg2ppf98gcpnd38evjot52cc1v88u92h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

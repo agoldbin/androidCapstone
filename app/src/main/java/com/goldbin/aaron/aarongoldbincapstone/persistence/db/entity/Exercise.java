@@ -2,51 +2,22 @@ package com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity;
 
 // TODO https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#10 use this as model
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Embedded;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.Relation;
-import android.support.annotation.NonNull;
+import com.google.firebase.database.IgnoreExtraProperties;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(tableName = "exercises",
-        foreignKeys = {
-                @ForeignKey(entity = Workout.class,
-                        parentColumns = "id",
-                        childColumns = "id",
-                        onDelete = ForeignKey.CASCADE)
-        })
+@IgnoreExtraProperties
 public class Exercise {
-
-    @PrimaryKey
-    @NonNull
     private int id;
-
-    @Relation(parentColumn = "id", entityColumn = "workoutId", entity = Exercise.class)
     private int workoutId;
-
-    // exercise name
-    @ColumnInfo(name = "exerciseName")
     private String exerciseName;
-
-    // exercise sets
-    @ColumnInfo(name = "sets")
     private int sets;
-
-    @ColumnInfo(name = "repsSame")
     private boolean repsSame;
-
-    @ColumnInfo(name = "weightsSame")
     private boolean weightSame;
 
-    // Detailed info on sets
-    @Embedded
     Set set;
 
 
