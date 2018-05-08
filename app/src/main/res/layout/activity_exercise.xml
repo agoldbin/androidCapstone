@@ -6,33 +6,182 @@
     android:layout_height="match_parent"
     tools:context=".persistence.ui.ExerciseActivity">
 
-    <fragment android:name="com.goldbin.aaron.aarongoldbincapstone.persistence.ui.SetFragment"
-        android:id="@+id/setInfo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <fragment android:name="com.goldbin.aaron.aarongoldbincapstone.persistence.ui.ExerciseFragment"
-        android:id="@+id/exerciseInfo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <TextView
+        android:id="@+id/lblExerciseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/exercise_name"
+        app:layout_constraintBottom_toBottomOf="@+id/inputExerciseName"
+        app:layout_constraintEnd_toStartOf="@+id/inputExerciseName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="@+id/inputExerciseName" />
 
-    <FrameLayout
-        android:id="@+id/fragment_container2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <TextView
+        android:id="@+id/lblExerciseSets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/sets"
+        app:layout_constraintBottom_toBottomOf="@+id/inputExerciseSets"
+        app:layout_constraintTop_toTopOf="@+id/inputExerciseSets"
+        app:layout_constraintEnd_toEndOf="@+id/lblExerciseName"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <TextView
+        android:id="@+id/lblExerciseReps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/rep"
+        app:layout_constraintBottom_toBottomOf="@+id/inputExerciseReps"
+        app:layout_constraintEnd_toStartOf="@+id/inputExerciseReps"
+        app:layout_constraintTop_toTopOf="@+id/inputExerciseReps" />
+
+    <TextView
+        android:id="@+id/lblExerciseWeights"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/weight"
+        app:layout_constraintBottom_toBottomOf="@+id/inputExerciseWeight"
+        app:layout_constraintEnd_toStartOf="@+id/inputExerciseWeight"
+        app:layout_constraintTop_toTopOf="@+id/inputExerciseWeight" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/lblEmail"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:text="@string/reps"-->
+    <!--app:layout_constraintBottom_toBottomOf="@+id/inputExerciseReps"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/inputExerciseReps"-->
+    <!--app:layout_constraintEnd_toEndOf="@+id/lblFirstName"-->
+    <!--tools:layout_editor_absoluteX="32dp" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/lblPhone"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:text="@string/weight"-->
+    <!--app:layout_constraintBottom_toBottomOf="@+id/inputExerciseWeight"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/inputExerciseWeight"-->
+    <!--app:layout_constraintEnd_toEndOf="@+id/lblFirstName"-->
+    <!--tools:layout_editor_absoluteX="40dp" />-->
+
+    <EditText
+        android:id="@+id/inputExerciseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:layout_marginTop="52dp"
+        android:ems="10"
+        android:hint="@string/hintRequired"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputExerciseSets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hintRequired"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@id/inputExerciseName"
+        app:layout_constraintTop_toBottomOf="@+id/inputExerciseName" />
+
+    <EditText
+        android:id="@+id/inputExerciseReps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint=""
+        app:layout_constraintTop_toBottomOf="@+id/inputExerciseSets"
+        app:layout_constraintStart_toStartOf="@id/inputExerciseName"
+        tools:layout_editor_absoluteX="113dp" />
+
+    <EditText
+        android:id="@+id/inputExerciseWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint=""
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/inputExerciseName"
+        app:layout_constraintTop_toBottomOf="@+id/inputExerciseReps" />
+
+    <Button
+        android:id="@+id/btnAddExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </FrameLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelExercise" />
+
+    <Button
+        android:id="@+id/btnCancelExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAddExercise"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDeleteExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/delete_exercise"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancelExercise"
+        app:layout_constraintStart_toStartOf="@+id/btnCancelExercise" />
+
+    <!--<Switch-->
+        <!--android:id="@+id/switchReps"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="24dp"-->
+        <!--android:checked="true"-->
+        <!--android:text="@string/switch_reps"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/inputExerciseName"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/inputExerciseName" />-->
+
+    <!--<Switch-->
+        <!--android:id="@+id/switchWeight"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="24dp"-->
+        <!--android:checked="true"-->
+        <!--android:text="@string/switch_weight"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/inputExerciseName"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/switchReps" />-->
+
+
 </android.support.constraint.ConstraintLayout>

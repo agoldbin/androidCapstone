@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.goldbin.aaron.aarongoldbincapstone.AppInfo;
 import com.goldbin.aaron.aarongoldbincapstone.R;
@@ -138,9 +139,52 @@ public class MainActivity extends AppCompatActivity implements AppInfo {
         mFabMain.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, WorkoutActivity.class);
+//                mWorkoutsArray.add(new Workout());
                 startActivityForResult(intent, 0);
+
             }
         });
     }
+    /**
+     * Dispatch incoming result to the correct fragment.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        switch (resultCode) {
+//            case 0:
+//                // if new contact entered
+//                mContact = (Contact) data.getParcelableExtra("EXTRA_CONTACT_ADDED");
+//                mContactArray.add(mContact);
+//                // update count of contacts added and list view of contacts
+//                updateList();
+//                mNumberOfContactsLbl.setText(numberOfContacts());
+//                break;
+//            case 2:
+//                // if contact updated
+//                Contact mUpdateContact = data.getParcelableExtra("UPDATE_CONTACT");
+//                int i;
+//                i = mContactArray.indexOf(mContact);
+//                mContactArray.remove(i);
+//                mContactArray.add(i, mUpdateContact);
+//                updateList();
+//                Toast.makeText(getApplicationContext(), "Contact Updated", Toast.LENGTH_SHORT).show();
+//                break;
+//            default:
+//                // if no contact entered
+//                if (data == null) {
+//                    Toast.makeText(getApplicationContext(), "No contact received", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "An error occurred while entering contact", Toast.LENGTH_SHORT).show();
+//                }
+//                break;
+//        }
+//        // notify array adapter of update to contact list
+//        mObjectArrayAdapter.notifyDataSetChanged();
+    }
+
 }
 

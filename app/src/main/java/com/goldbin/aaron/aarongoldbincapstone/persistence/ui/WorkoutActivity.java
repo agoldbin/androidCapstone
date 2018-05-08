@@ -105,7 +105,7 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
         // Floating action button to add exercise
         mFabWorkout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                mWorkout = new Workout(mWorkoutName.getText().toString());
+//                mWorkout = new Workout(mWorkoutName.getText().toString());
                 Intent intent = new Intent(WorkoutActivity.this, ExerciseActivity.class);
                 startActivityForResult(intent, 0);
             }
@@ -118,6 +118,9 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
                 if (mWorkoutName.getText().toString().trim().equalsIgnoreCase("")) {
                     // No workout name added
                     mWorkoutName.setError("Workout name is required");
+                } else if (mExerciseArray == null) {
+                    // No exercises added
+                    mExerciseArray = new ArrayList<Exercise>();
                 } else if (mExerciseArray.size() == 0) {
                     // No exercises added
                     Toast.makeText(
@@ -165,6 +168,39 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
         setResult(0, contactData);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode) {
+            case 0:
+                // if new exercise entered
+                mContact = (Contact) data.getParcelableExtra("EXTRA_CONTACT_ADDED");
+                mContactArray.add(mContact);
+                // update count of contacts added and list view of contacts
+                updateList();
+                mNumberOfContactsLbl.setText(numberOfContacts());
+                break;
+            case 2:
+                // if contact updated
+                Contact mUpdateContact = data.getParcelableExtra("UPDATE_CONTACT");
+                int i;
+                i = mContactArray.indexOf(mContact);
+                mContactArray.remove(i);
+                mContactArray.add(i, mUpdateContact);
+                updateList();
+                Toast.makeText(getApplicationContext(), "Contact Updated", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                // if no contact entered
+                if (data == null) {
+                    Toast.makeText(getApplicationContext(), "No contact received", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "An error occurred while entering contact", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+        // notify array adapter of update to contact list
+        mObjectArrayAdapter.notifyDataSetChanged();
+    }
 
     // back to main activity if back button pressed
     @Override

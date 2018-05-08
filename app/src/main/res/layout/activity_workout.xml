@@ -26,6 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
         android:text="@string/no_exercises_entered"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

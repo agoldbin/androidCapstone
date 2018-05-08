@@ -1,5 +1,7 @@
 package com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@IgnoreExtraProperties
 public class Set {
     private int id;
     private int exerciseId;

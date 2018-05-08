@@ -18,7 +18,8 @@ public class Exercise {
     private boolean repsSame;
     private boolean weightSame;
 
-    Set set;
+    private int reps;
+    private int weight;
 
 
     // TODO add method to determine if rep or sets need to be int array (based on bools)
@@ -31,6 +32,14 @@ public class Exercise {
      * Instantiates a new Exercise entity.
      */
     public Exercise() {
+    }
+
+
+    public Exercise(String exerciseName, int sets, int reps, int weight) {
+        this.exerciseName = exerciseName;
+        this.sets = sets;
+        this.reps = reps;
+        this.weight = weight;
     }
 
     /**
