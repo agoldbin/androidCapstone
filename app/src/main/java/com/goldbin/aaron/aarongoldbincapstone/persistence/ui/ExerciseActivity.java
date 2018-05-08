@@ -11,10 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.goldbin.aaron.aarongoldbincapstone.AppInfo;
 import com.goldbin.aaron.aarongoldbincapstone.R;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.FirebaseHelper;
 import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Exercise;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -91,19 +95,6 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
-//        // add fragments for exercise activity
-//        FragmentManager fragManager = getSupportFragmentManager();
-//        FragmentTransaction fragTransaction = fragManager.beginTransaction();
-//
-//        ExerciseFragment exerciseFrag = new ExerciseFragment();
-//        SetFragment setFrag = new SetFragment();
-//
-//        fragTransaction.add(R.id.fragment_container, exerciseFrag);
-//        fragTransaction.commit();
-
-        // wire up widgets
-//        mAddExercise = (Button) (findViewById(R.id.btnAdd));
-//        mCancelExercise = (Button) (findViewById(R.id.btnCancel));
         mName = (EditText) (findViewById(R.id.inputExerciseName));
         mSets = (EditText) (findViewById(R.id.inputExerciseSets));
         mRep = (EditText) (findViewById(R.id.inputExerciseReps));
@@ -115,8 +106,6 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
         mCancelExercise = (Button) (findViewById(R.id.btnCancelExercise));
         mAddExercise = (Button) (findViewById(R.id.btnAddExercise));
         mDeleteExercise = (Button) (findViewById(R.id.btnDeleteExercise));
-//        mLbl1 = (TextView) (findViewById(R.id.lblExercise1));
-//        mLbl2 = (TextView) (findViewById(R.id.lblExercise2));
 
 
         // check for contact being passed to activity
@@ -164,6 +153,11 @@ public class ExerciseActivity extends AppCompatActivity implements AppInfo {
                             , Integer.parseInt(mRep.getText().toString())
                             , Integer.parseInt(mWeight.getText().toString())
                     );
+                    DatabaseReference fb = FirebaseDatabase
+                            .getInstance()
+                            .getReference(AppInfo.FIREBASE_CHILD);
+                    fb.push().setValue(mExercise);
+                    Toast.makeText(getApplicationContext(), "Exercise added", Toast.LENGTH_SHORT).show();
                     exerciseEntered();
                     ExerciseActivity.super.onBackPressed();
                 }

@@ -55,22 +55,21 @@ public class ExerciseArrayAdapter extends ArrayAdapter<Exercise> {
         if (exercise != null) {
             //obtain a reference to widgets in the defined layout "wire up the widgets from detail_line"
             // note:  view.  which ties it to detail_line
-            /*
-            TextView mEx1  = (TextView) view.findViewById(R.id.contactName);
-            TextView mEmail = (TextView) view.findViewById(R.id.contactEmail);
-            TextView mPhone = (TextView) view.findViewById(R.id.contactPhone);
 
-            if (mEx1 != null) {
-                String name =  exercise.getContactLast() + ", " + exercise.getContactFirst();
-                mEx1.setText(name);
+            TextView mName  = (TextView) view.findViewById(R.id.exerciseName);
+            TextView mSets = (TextView) view.findViewById(R.id.exerciseSets);
+            TextView mReps = (TextView) view.findViewById(R.id.exerciseWeights);
+
+            if (mName != null) {
+                String name =  exercise.getExerciseName();
+                mName.setText(name);
             }
-            if (mEmail != null) {
-                mEmail.setText(exercise.getContactEmail());
+            if (mSets != null) {
+                mSets.setText(exercise.getSets());
             }
-            if (mPhone != null) {
-                mPhone.setText(exercise.getContactPhone());
+            if (mReps!= null) {
+                mReps.setText(exercise.getReps());
             }
-        */
         }
 
         // the view (my custom detail_line with loaded data) returned to our Activity

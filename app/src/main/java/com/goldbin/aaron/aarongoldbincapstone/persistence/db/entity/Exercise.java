@@ -2,24 +2,26 @@ package com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity;
 
 // TODO https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#10 use this as model
 
+import android.os.Parcelable;
+
 import com.google.firebase.database.IgnoreExtraProperties;
+
+import org.parceler.Parcel;
 
 import lombok.Getter;
 import lombok.Setter;
 
+//@Parcel
 @Getter
 @Setter
 @IgnoreExtraProperties
-public class Exercise {
-    private int id;
-    private int workoutId;
-    private String exerciseName;
-    private int sets;
-    private boolean repsSame;
-    private boolean weightSame;
-
-    private int reps;
-    private int weight;
+public class Exercise implements Parcelable {
+    int id;
+    int workoutId;
+    String exerciseName;
+    int sets;
+    int reps;
+    int weight;
 
 
     // TODO add method to determine if rep or sets need to be int array (based on bools)
@@ -64,7 +66,41 @@ public class Exercise {
         this.workoutId = workoutId;
         this.exerciseName = exerciseName;
         this.sets = sets;
-        this.repsSame = repsSame;
-        this.weightSame = weightSame;
+    }
+
+    protected Exercise(android.os.Parcel in) {
+        id = in.readInt();
+        workoutId = in.readInt();
+        exerciseName = in.readString();
+        sets = in.readInt();
+        reps = in.readInt();
+        weight = in.readInt();
+    }
+
+    public static final Creator<Exercise> CREATOR = new Creator<Exercise>() {
+        @Override
+        public Exercise createFromParcel(android.os.Parcel in) {
+            return new Exercise(in);
+        }
+
+        @Override
+        public Exercise[] newArray(int size) {
+            return new Exercise[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(android.os.Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(workoutId);
+        dest.writeString(exerciseName);
+        dest.writeInt(sets);
+        dest.writeInt(reps);
+        dest.writeInt(weight);
     }
 }

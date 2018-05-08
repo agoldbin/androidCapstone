@@ -7,6 +7,8 @@ package com.goldbin.aaron.aarongoldbincapstone;
  */
 
 public interface AppInfo {
+    public static final String FIREBASE_CHILD = "workouts";
+
     public static final String TAG
             = "myDebug";
     public static final String WORKOUT_LIST
@@ -19,7 +21,10 @@ public interface AppInfo {
             = "com.goldbin.aaron.aarongoldbincapstone.editWorkout";
     public static final String EDIT_EXERCISE
             = "com.goldbin.aaron.aarongoldbincapstone.editExercise";
-
+    public static final String EXTRA_WORKOUT_ADDED
+            = "com.goldbin.aaron.aarongoldbincapstone.addWorkout";
+    public static final String UPDATE_WORKOUT
+            = "com.goldbin.aaron.aarongoldbincapstone.updateWorkout";
 
     // Exercise Activity vars
     public static final String NAME

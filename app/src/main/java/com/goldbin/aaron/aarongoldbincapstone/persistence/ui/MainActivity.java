@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.goldbin.aaron.aarongoldbincapstone.AppInfo;
 import com.goldbin.aaron.aarongoldbincapstone.R;
+import com.goldbin.aaron.aarongoldbincapstone.persistence.db.FirebaseHelper;
 import com.goldbin.aaron.aarongoldbincapstone.persistence.db.entity.Workout;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +27,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AppInfo {
     // Reference to database
-    DatabaseReference fbRef;
+    DatabaseReference db;
+    FirebaseHelper helper;
 
     // Initialize variables and widgets
     FloatingActionButton mFabMain;
@@ -70,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements AppInfo {
         setContentView(R.layout.activity_main);
 
         // get reference to firebase
-        fbRef = FirebaseDatabase.getInstance().getReference();
-        mWorkoutslv = (ListView) findViewById(android.R.id.list);
+        db = FirebaseDatabase.getInstance().getReference();
+        helper = new FirebaseHelper(db);
 
         // TODO wire up widgets
         mFabMain = (FloatingActionButton) (findViewById(R.id.fabMain));
@@ -84,36 +86,6 @@ public class MainActivity extends AppCompatActivity implements AppInfo {
         mWorkoutslv.setEmptyView(mEmptyWorkout);
 
         // add event listener for firebase
-        fbRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                mWorkoutsArray.add(dataSnapshot.getValue(Workout.class));
-                mWorkoutArrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//          if workout array contains, -> replace
-//                mWorkoutsArray.(dataSnapshot.getValue(Workout.class));
-                mWorkoutArrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                mWorkoutsArray.remove(dataSnapshot.getValue(Workout.class));
-                mWorkoutArrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
 //            if (savedInstanceState == null) {
 //                // if no saved instance exists

@@ -29,7 +29,7 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
     TextView mEmptyExercise;
     ListView mExerciselv;
     ArrayAdapter mExerciseArrayAdapter;
-    ArrayList<Exercise> mExerciseArray;
+    ArrayList<Exercise> mExerciseArray = new ArrayList<>();
     Button mSaveWorkout;
     Button mDeleteWorkout;
 
@@ -118,9 +118,9 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
                 if (mWorkoutName.getText().toString().trim().equalsIgnoreCase("")) {
                     // No workout name added
                     mWorkoutName.setError("Workout name is required");
-                } else if (mExerciseArray == null) {
-                    // No exercises added
-                    mExerciseArray = new ArrayList<Exercise>();
+//                } else if (mExerciseArray == null) {
+//                    // No exercises added
+//                    mExerciseArray = new ArrayList<Exercise>();
                 } else if (mExerciseArray.size() == 0) {
                     // No exercises added
                     Toast.makeText(
@@ -173,34 +173,44 @@ public class WorkoutActivity extends AppCompatActivity implements AppInfo {
         switch (resultCode) {
             case 0:
                 // if new exercise entered
-                mContact = (Contact) data.getParcelableExtra("EXTRA_CONTACT_ADDED");
-                mContactArray.add(mContact);
+                mExercise = (Exercise) data.getParcelableExtra("EXTRA_WORKOUT_ADDED");
+                mExerciseArray.add(mExercise);
                 // update count of contacts added and list view of contacts
                 updateList();
-                mNumberOfContactsLbl.setText(numberOfContacts());
                 break;
             case 2:
-                // if contact updated
-                Contact mUpdateContact = data.getParcelableExtra("UPDATE_CONTACT");
+                // if exercise updated
+                Exercise mUpdateExercise = data.getParcelableExtra("UPDATE_WORKOUT");
                 int i;
-                i = mContactArray.indexOf(mContact);
-                mContactArray.remove(i);
-                mContactArray.add(i, mUpdateContact);
+                i = mExerciseArray.indexOf(mExercise);
+                mExerciseArray.remove(i);
+                mExerciseArray.add(i, mUpdateExercise);
                 updateList();
                 Toast.makeText(getApplicationContext(), "Contact Updated", Toast.LENGTH_SHORT).show();
                 break;
             default:
-                // if no contact entered
+                // if no workout entered
                 if (data == null) {
-                    Toast.makeText(getApplicationContext(), "No contact received", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            getApplicationContext()
+                            , "No workout received"
+                            , Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "An error occurred while entering contact", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            getApplicationContext()
+                            , "An error occurred while entering workout"
+                            , Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
         // notify array adapter of update to contact list
-        mObjectArrayAdapter.notifyDataSetChanged();
+        mExerciseArrayAdapter.notifyDataSetChanged();
+        }
+
+    public void updateList() {
+        mExerciselv.setAdapter(mExerciseArrayAdapter);
     }
+
 
     // back to main activity if back button pressed
     @Override
