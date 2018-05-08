@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements AppInfo {
 
     // Initialize variables and widgets
     FloatingActionButton mFabMain;
-    TextView mEmptyMessage;
+    TextView mEmptyWorkout;
     ListView mWorkoutslv;
     ArrayAdapter mWorkoutArrayAdapter;
     ArrayList<Workout> mWorkoutsArray;
@@ -77,8 +77,10 @@ public class MainActivity extends AppCompatActivity implements AppInfo {
 
         mWorkoutslv = (ListView) (findViewById(R.id.lvWorkoutList));
         mWorkoutArrayAdapter = new ArrayAdapter(this, R.layout.workout_detail, mWorkoutsArray);
-        mWorkoutslv.setAdapter(mWorkoutArrayAdapter);
+//        mWorkoutslv.setAdapter(mWorkoutArrayAdapter);
 
+        mEmptyWorkout = (TextView) findViewById(android.R.id.empty);
+        mWorkoutslv.setEmptyView(mEmptyWorkout);
 
         // add event listener for firebase
         fbRef.addChildEventListener(new ChildEventListener() {
@@ -120,25 +122,25 @@ public class MainActivity extends AppCompatActivity implements AppInfo {
 ////                mWorkoutsArray = savedInstanceState.getParcelableArrayList(WORKOUT_LIST);
 //            }
 
-            // enable ability to click/edit workout
-            // workouts are editable
-            mWorkoutslv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    mWorkout = mWorkoutsArray.get(i);
-                    Intent intent = new Intent(MainActivity.this, WorkoutActivity.class);
+        // enable ability to click/edit workout
+        // workouts are editable
+        mWorkoutslv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mWorkout = mWorkoutsArray.get(i);
+                Intent intent = new Intent(MainActivity.this, WorkoutActivity.class);
 //                    intent.putExtra("EDIT_WORKOUT", mWorkout);
-                    startActivityForResult(intent, 0);
-                }
-            });
+                startActivityForResult(intent, 0);
+            }
+        });
 
-            // Floating action button to add workout(how?)
-            mFabMain.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, WorkoutActivity.class);
-                    startActivityForResult(intent, 0);
-                }
-            });
-        }
+        // Floating action button to add workout(how?)
+        mFabMain.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WorkoutActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
+}
 
